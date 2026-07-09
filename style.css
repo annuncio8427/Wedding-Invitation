@@ -1,0 +1,672 @@
+/* ===================================================
+   REX MAGIN  &  CHENMARI  —  WEDDING INVITATION
+   Premium editorial theme: antique-gold on deep wine,
+   ivory keepsake card, script + serif type pairing.
+=================================================== */
+
+@import url(
+'https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap'
+);
+
+:root{
+  /* -- palette -- */
+  --wine-deep:#2a0712;
+  --wine:#3f0d1c;
+  --wine-light:#6a1530;
+  --gold:#c9a24b;
+  --gold-light:#e9d29c;
+  --gold-deep:#8f6d29;
+  --ivory:#fdf6ea;
+  --champagne:#f2e2bd;
+  --ink:#4a0f22;
+  --ink-soft:#6b2338;
+
+  /* -- type -- */
+  --font-script:'Great Vibes', cursive;
+  --font-serif:'Cormorant Garamond', serif;
+  --font-sans:'Poppins', sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  position:relative;
+  font-family:var(--font-sans);
+  color:var(--champagne);
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(201,162,75,.18), transparent 55%),
+    linear-gradient(150deg, var(--wine-deep), var(--wine) 45%, var(--wine-light) 78%, var(--wine-deep));
+  background-size:100% 100%, 320% 320%;
+  animation:bgMove 18s ease-in-out infinite;
+}
+
+@keyframes bgMove{
+  50%{ background-position:0 0, 100% 55%; }
+}
+
+/* soft vignette for depth */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(10,1,4,.55) 100%);
+}
+
+/* fine gold particle texture */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:radial-gradient(rgba(201,162,75,.55) 1px, transparent 1px);
+  background-size:46px 46px;
+  opacity:.18;
+  animation:stars 26s linear infinite;
+}
+
+@keyframes stars{
+  100%{ background-position:230px 400px; }
+}
+
+.hidden{ display:none; }
+
+/* ==============================
+   TYPE SCALE
+============================== */
+
+h1{
+  font-family:var(--font-script);
+  font-weight:400;
+  line-height:1.2;
+  font-size:clamp(42px, 8vw, 82px);
+  background:linear-gradient(90deg, var(--gold-light), var(--gold) 45%, var(--gold-light));
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 10px rgba(0,0,0,.35));
+}
+
+h2{
+  font-family:var(--font-sans);
+  font-weight:500;
+  font-size:clamp(12px, 2.4vw, 15px);
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:22px;
+  position:relative;
+  display:inline-block;
+}
+
+/* signature eyebrow divider under every h2 label */
+h2::after{
+  content:"";
+  display:block;
+  width:52px;
+  height:1px;
+  margin:12px auto 0;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+h3{
+  font-family:var(--font-serif);
+  font-size:clamp(20px, 4vw, 30px);
+  color:var(--gold-light);
+}
+
+p{
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-size:clamp(16px, 3.4vw, 22px);
+  line-height:1.7;
+  color:var(--champagne);
+  font-weight:500;
+}
+
+span{
+  color:var(--gold-light);
+  -webkit-text-fill-color:var(--gold-light);
+  background:none;
+}
+
+.rings{
+  font-size:clamp(22px, 5vw, 30px);
+  margin:6px 0 4px;
+  letter-spacing:6px;
+  filter:drop-shadow(0 0 10px rgba(201,162,75,.6));
+}
+
+/* ==============================
+   ACCESSIBILITY / MOTION
+============================== */
+
+a:focus-visible,
+button:focus-visible{
+  outline:2px solid var(--gold-light);
+  outline-offset:3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}
+
+/* ==============================
+   ENVELOPE INTRO
+============================== */
+
+.envelope-screen,
+.book-screen{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle at 50% 40%, var(--wine-light), var(--wine-deep) 75%);
+}
+
+.envelope-screen{
+  animation:hideIntro 1s forwards;
+  animation-delay:4s;
+}
+
+@keyframes hideIntro{
+  100%{ opacity:0; visibility:hidden; }
+}
+
+.envelope{
+  width:clamp(250px, 45vw, 420px);
+  height:250px;
+  position:relative;
+  background:linear-gradient(45deg, var(--gold-deep), var(--gold) 55%, var(--gold-light));
+  border-radius:14px;
+  box-shadow:0 0 70px rgba(201,162,75,.55), 0 25px 50px rgba(0,0,0,.4);
+}
+
+.flap{
+  position:absolute;
+  top:0;
+  width:100%;
+  height:50%;
+  background:var(--wine);
+  clip-path:polygon(0 0, 100% 0, 50% 100%);
+  transform-origin:top;
+  animation:openFlap 2s forwards;
+  animation-delay:1s;
+}
+
+@keyframes openFlap{
+  100%{ transform:rotateX(180deg); }
+}
+
+.letter{
+  position:absolute;
+  left:10%;
+  bottom:0;
+  width:80%;
+  height:80%;
+  background:var(--ivory);
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  animation:letterUp 3s forwards;
+  animation-delay:1.5s;
+}
+
+/* scoped fix: this box has a light background, so text needs solid ink,
+   not the gold gradient meant for the dark scenes */
+.letter h2{
+  color:var(--ink);
+  margin-bottom:6px;
+}
+.letter h2::after{
+  background:linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+}
+.letter h1{
+  background:none;
+  -webkit-text-fill-color:var(--ink);
+  color:var(--ink);
+  filter:none;
+  font-size:clamp(34px, 9vw, 56px);
+}
+
+@keyframes letterUp{
+  100%{ bottom:90px; }
+}
+
+/* ==============================
+   FLIP BOOK
+============================== */
+
+.book-screen{
+  opacity:0;
+  animation:bookShow 8s forwards;
+  animation-delay:4s;
+}
+
+@keyframes bookShow{
+  0%,45%{ opacity:0; }
+  50%,90%{ opacity:1; }
+  100%{ opacity:0; visibility:hidden; }
+}
+
+.book{
+  width:clamp(280px, 70vw, 600px);
+  height:380px;
+  display:flex;
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+  border-radius:6px;
+  overflow:hidden;
+  perspective:1500px;
+}
+
+.page{
+  width:50%;
+  background:linear-gradient(160deg, var(--ivory), var(--champagne));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+/* scoped fix: cream background needs ink-colored text, not the gold gradient */
+.page h2{ color:var(--ink-soft); }
+.page h2::after{ background:linear-gradient(90deg, transparent, var(--gold-deep), transparent); }
+.page h1{
+  background:none;
+  -webkit-text-fill-color:var(--ink);
+  color:var(--ink);
+  filter:none;
+}
+.page p{ color:var(--ink-soft); font-style:normal; }
+
+.left{
+  transform-origin:right;
+  animation:pageOpen 3s forwards;
+  animation-delay:5s;
+}
+
+@keyframes pageOpen{
+  100%{ transform:rotateY(-160deg); }
+}
+
+/* ==============================
+   SCENES
+============================== */
+
+.scene{
+  position:absolute;
+  inset:0;
+  height:100dvh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  opacity:0;
+  visibility:hidden;
+  animation:sceneShow 30s infinite;
+  z-index:2;
+}
+
+.s1{animation-delay:8s;}
+.s2{animation-delay:13s;}
+.s3{animation-delay:18s;}
+.s4{animation-delay:23s;}
+.s5{animation-delay:30s;}
+.s6{animation-delay:35s;}
+
+@keyframes sceneShow{
+  0%{
+    opacity:0;
+    visibility:hidden;
+    transform:scale(.92);
+    filter:blur(14px);
+  }
+  8%,18%{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+    filter:blur(0);
+  }
+  25%,100%{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+/* signature: an oversized translucent monogram behind the hero scene */
+.s1{
+  overflow:hidden;
+}
+.s1::before{
+  content:"R & C";
+  position:absolute;
+  font-family:var(--font-script);
+  font-size:min(46vw, 340px);
+  color:rgba(201,162,75,.08);
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ==============================
+   GLASS CARD
+============================== */
+
+.scene > div{
+  position:relative;
+  z-index:1;
+  width:min(88vw, 480px);
+  min-height:min(70vh, 560px);
+  padding:clamp(28px, 5vw, 46px) clamp(22px, 5vw, 40px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:14px;
+  border-radius:18px;
+  background:linear-gradient(160deg, rgba(255,250,238,.10), rgba(255,250,238,.03));
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(201,162,75,.45);
+  box-shadow:
+    0 0 0 1px rgba(201,162,75,.12) inset,
+    0 25px 60px rgba(0,0,0,.45),
+    0 0 40px rgba(201,162,75,.12);
+}
+
+/* hero text needs more line-height room for cursive loops across 3 lines */
+.s1 h1{
+  line-height:1.28;
+  font-size:clamp(36px, 9vw, 68px);
+}
+
+/* ==============================
+   MEDALLION-FRAMED PHOTOS
+============================== */
+
+img{
+  width:clamp(150px, 28vw, 240px);
+  height:clamp(150px, 28vw, 240px);
+  border-radius:50%;
+  object-fit:cover;
+  padding:0;
+  background:var(--wine-deep);
+  box-shadow:
+    0 0 0 4px var(--wine-deep),
+    0 0 0 7px var(--gold),
+    0 0 0 9px var(--wine-deep),
+    0 0 0 11px rgba(201,162,75,.5),
+    0 15px 40px rgba(0,0,0,.5);
+  animation:photoMove 4s infinite alternate;
+  margin-bottom:6px;
+}
+
+@keyframes photoMove{
+  100%{ transform:translateY(-10px); }
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.music{
+  position:fixed;
+  right:20px;
+  top:calc(20px + env(safe-area-inset-top, 0px));
+  z-index:300;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:1px solid rgba(201,162,75,.6);
+  font-size:20px;
+  background:linear-gradient(160deg, var(--wine-light), var(--wine-deep));
+  color:var(--gold-light);
+  box-shadow:0 8px 24px rgba(0,0,0,.4), 0 0 18px rgba(201,162,75,.25);
+  cursor:pointer;
+  transition:transform .2s ease;
+}
+
+.music:active{ transform:scale(.92); }
+
+.map{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:8px;
+  padding:14px 34px;
+  border-radius:50px;
+  background:linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light));
+  color:var(--wine-deep);
+  font-family:var(--font-sans);
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-decoration:none;
+  box-shadow:0 10px 28px rgba(0,0,0,.35), 0 0 22px rgba(201,162,75,.35);
+  transition:transform .2s ease;
+}
+
+.map:active{ transform:scale(.96); }
+
+#countdown{
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-weight:600;
+  font-size:clamp(15px, 3vw, 19px);
+  color:var(--gold-light);
+  letter-spacing:.03em;
+}
+
+/* ==============================
+   FLOWER FALL
+============================== */
+
+.float{
+  position:fixed;
+  top:-50px;
+  z-index:10;
+  pointer-events:none;
+  animation:flowerFall linear forwards;
+}
+
+@keyframes flowerFall{
+  0%{ transform:translateX(0) translateY(0) rotate(0deg); opacity:1; }
+  50%{ transform:translateX(40px) translateY(50vh) rotate(180deg); }
+  100%{ transform:translateX(-40px) translateY(110vh) rotate(360deg); opacity:0; }
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:600px){
+  .scene{ padding:14px; }
+  .scene > div{ width:92vw; min-height:64vh; border-radius:16px; gap:10px; }
+  img{ width:150px; height:150px; }
+  .music{ width:44px; height:44px; font-size:17px; }
+  .envelope{ height:200px; }
+  .book{ height:280px; }
+  .s1 h1{ font-size:clamp(30px, 11vw, 46px); }
+}
+
+@media(min-width:601px) and (max-width:1000px){
+  .scene > div{ width:75vw; }
+  img{ width:220px; height:220px; }
+}
+
+@media(max-height:520px){
+  .scene > div{ transform:scale(.85); gap:8px; }
+  img{ width:120px; height:120px; }
+}
+
+/* ==================================
+   INVITATION COVER (keepsake card)
+================================== */
+
+.start-screen{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle, var(--wine), var(--wine-deep) 70%, #0d0206);
+}
+
+.invite-cover{
+  width:clamp(280px, 35vw, 420px);
+  height:clamp(430px, 60vh, 540px);
+  cursor:pointer;
+  position:relative;
+  border-radius:16px;
+  padding:10px;
+  background:linear-gradient(145deg, var(--gold-deep), var(--gold) 50%, var(--gold-light));
+  box-shadow:0 0 60px rgba(201,162,75,.5), 0 30px 60px rgba(0,0,0,.5);
+  animation:floatInvite 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatInvite{
+  100%{ transform:translateY(-14px); }
+}
+
+.cover-top{ display:none; }
+
+.cover-card{
+  width:100%;
+  height:100%;
+  border-radius:10px;
+  background:linear-gradient(165deg, var(--ivory), #fffaf1);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* refined gold hairline frame, inset so it never collides with text */
+.cover-card::before{
+  content:"";
+  position:absolute;
+  inset:16px;
+  border:1px solid var(--gold-deep);
+  border-radius:6px;
+  pointer-events:none;
+}
+
+.cover-card::after{
+  content:"";
+  position:absolute;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  width:70px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+}
+
+.cover-card h2{
+  color:var(--gold-deep);
+  font-family:var(--font-sans);
+  font-size:12px;
+  letter-spacing:.34em;
+  margin-bottom:0;
+}
+.cover-card h2::after{
+  background:linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+}
+
+.initials{
+  z-index:5;
+  font-family:var(--font-script);
+  font-size:clamp(70px, 9vw, 104px);
+  color:var(--ink);
+  display:flex;
+  gap:16px;
+  align-items:center;
+  line-height:1;
+}
+
+.initials span{
+  font-size:44px;
+  -webkit-text-fill-color:initial;
+  color:initial;
+  filter:drop-shadow(0 0 8px rgba(201,162,75,.5));
+}
+
+.date-small{
+  z-index:5;
+  font-family:var(--font-sans);
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink-soft);
+  letter-spacing:.32em;
+}
+
+.cover-card p{
+  z-index:5;
+  padding:13px 34px;
+  border-radius:50px;
+  background:linear-gradient(90deg, var(--gold-deep), var(--gold));
+  color:var(--ivory);
+  font-family:var(--font-sans);
+  font-style:normal;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  box-shadow:0 10px 26px rgba(0,0,0,.25), 0 0 20px rgba(201,162,75,.4);
+  animation:tapPulse 2s ease-in-out infinite;
+}
+
+@keyframes tapPulse{
+  50%{ box-shadow:0 10px 26px rgba(0,0,0,.25), 0 0 34px rgba(201,162,75,.7); }
+}
+
+.start-screen.open{
+  animation:hideCover 1.5s forwards;
+}
+
+.start-screen.open .invite-cover{
+  animation:openCard 1.5s forwards;
+}
+
+@keyframes openCard{
+  100%{ transform:scale(1.8) rotateY(180deg); opacity:0; }
+}
+
+@keyframes hideCover{
+  100%{ opacity:0; visibility:hidden; }
+}
+
+@media(max-width:600px){
+  .invite-cover{ width:290px; height:460px; }
+  .initials{ font-size:74px; gap:12px; }
+}

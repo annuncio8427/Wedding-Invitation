@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta 
+name="viewport" 
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Rex Magin ❤️ Chenmari Wedding
+</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+<body>
+
+<!-- BACKGROUND MUSIC (moved out of start-screen so it isn't hidden/transformed with it) -->
+<audio 
+id="bgm"
+loop
+preload="auto">
+
+<source 
+src="assets/videoplayback.mp3"
+type="audio/mp3">
+
+</audio>
+
+<button 
+class="music"
+id="musicBtn"
+onclick="playMusic()">
+
+🎵
+
+</button>
+
+
+<!-- CLICK TO OPEN INVITATION -->
+
+<div class="start-screen" id="startScreen">
+
+
+<div class="invite-cover"
+onclick="openInvitation()">
+
+
+<div class="cover-top"></div>
+
+<div class="cover-card">
+
+
+<h2>
+Wedding Invitation
+</h2>
+
+
+<div class="initials">
+
+R
+
+<span>❤️</span>
+
+C
+
+</div>
+
+
+<div class="date-small">
+
+24 • 09 • 2026
+
+</div>
+
+
+<p>
+
+Open Invitation
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- MAIN INVITATION: now a direct sibling of start-screen (not nested inside it), -->
+<!-- so it is no longer hidden/warped when start-screen is set to display:none -->
+<div id="mainInvitation" class="hidden">
+
+
+<!-- ======================
+     ENVELOPE INTRO
+====================== -->
+
+
+<div class="envelope-screen" id="envelope">
+
+
+<div class="envelope">
+
+
+<div class="flap"></div>
+
+
+<div class="letter">
+
+<h2>
+Wedding Invitation
+</h2>
+
+<h1>
+R ❤️ C
+</h1>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- ======================
+     FLIP BOOK
+====================== -->
+
+
+<div class="book-screen" id="book">
+
+
+<div class="book">
+
+
+<div class="page left">
+
+
+<h2>
+Save
+</h2>
+
+<h1>
+The
+</h1>
+
+
+</div>
+
+
+
+<div class="page right">
+
+
+<h1>
+Date
+</h1>
+
+<p>
+
+24.09.2026
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+<!-- SCENE 1 INTRO -->
+
+
+<section class="scene s1">
+
+<div>
+
+<h2>
+✨ Wedding Invitation ✨
+</h2>
+
+
+<div class="rings">
+
+💍
+
+</div>
+
+
+<h1>
+
+Rex Magin
+
+<br>
+
+<span>
+&
+</span>
+
+<br>
+
+Chenmari
+
+
+</h1>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+<!-- SCENE 2 GROOM -->
+
+
+<section class="scene s2">
+
+
+<div>
+
+
+<img src="assets/groom.jpeg">
+
+
+<h2>
+
+The Groom
+
+</h2>
+
+
+<h1>
+
+Rex Magin
+
+</h1>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- SCENE 3 BRIDE -->
+
+
+<section class="scene s3">
+
+
+<div>
+
+
+<img src="assets/bride.jpeg">
+
+
+<h2>
+
+The Bride
+
+</h2>
+
+
+<h1>
+
+Chenmari
+
+</h1>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- SCENE 4 COUPLE -->
+
+
+<section class="scene s4">
+
+
+<div>
+
+
+<img src="assets/rex.jpeg">
+
+
+<h1>
+
+Forever Begins
+
+</h1>
+
+
+<p>
+
+Rex Magin ❤️ Chenmari
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- SCENE 5 DATE -->
+
+
+<section class="scene s5">
+
+
+<div>
+
+
+<h2>
+
+Save The Date
+
+</h2>
+
+
+<h1>
+
+24.09.2026
+
+</h1>
+
+
+<p>
+
+⛪ St. Antony's Church <br> Poottety,kk Dist.
+
+</p>
+
+
+
+<a 
+
+class="map"
+
+target="_blank"
+
+href="https://maps.app.goo.gl/2hCCcvz5pF8AE4YS8">
+
+🗺 Open Location
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- SCENE 6 FINAL -->
+
+
+<section class="scene s6">
+
+
+<div>
+
+
+<h1>
+
+Thank You ❤️
+
+</h1>
+
+
+<p>
+
+Awaiting Your Blessings
+
+</p>
+
+
+<h2 id="countdown">
+
+</h2>
+
+
+
+<a
+
+class="map"
+
+target="_blank"
+
+href="https://drive.google.com/file/d/1bECKMyK1p9Y6JaRfKemydvYsxLUzt_6N/view?usp=drive_link">
+
+💌 Click to view the Invitation
+
+
+</a>
+
+
+</div>
+
+
+</section>
+</div>
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+
+</html>
