@@ -263,7 +263,7 @@ createFlower,
 let weddingDate =
 
 new Date(
-"September 24, 2026 00:00:00"
+"August 24, 2026 00:00:00"
 ).getTime();
 
 
